@@ -1,15 +1,14 @@
 #!/usr/bin/env python310
 # -*- coding: utf-8 -*-
+import datetime
 import logging
+import math
 import os
-import pandas as pd
 import pathlib
 import sys
 import time
-import datetime
-import math
-import csv
-from collections import OrderedDict
+
+import pandas as pd
 
 __author__ = "Derek Whang"
 __version__ = "1.0"
@@ -39,8 +38,7 @@ class Main:
         root_folder = script_path.replace(script_name,"")
         self.logger.info(f"{script_name} is now running!")
 
-        # self.target_dir = input("Directory to search: ")
-        self.target_dir = "C:\\Users\\dezzw\\OneDrive\\Documents\\_script\\tech-team"
+        self.target_dir = input("Directory to search: ")
         self.target_dir = pathlib.Path("\\\\?\\"+self.target_dir).absolute()
         if str(self.target_dir).lower() == "q" or str(self.target_dir).lower()=="quit":
             self.logger.info("Quitting script")
@@ -66,18 +64,9 @@ class Main:
             return False
 
         df = pd.DataFrame(file_list)
-        df.to_csv(root_folder+"output.csv",index=False,header=["file_name","file_path","file_size","file_modified","file_created"])
+        df.to_csv(root_folder+"output.csv",index=False,header=["filename","filepath","file_size","file_modified","file_created"])
 
         return True
-
-    def stuff(self):
-        """
-            This should do something
-
-        Args:
-
-        """
-        return False
 
     def get_files(self,directory):
         """
