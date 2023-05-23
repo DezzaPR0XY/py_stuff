@@ -63,8 +63,10 @@ class Main:
             self.logger.error("Couldn't find any files in directory")
             return False
 
+        self.logger.info("Saving to Output.csv")
         df = pd.DataFrame(file_list)
         df.to_csv(root_folder+"output.csv",index=False,header=["filename","filepath","file_size","file_modified","file_created"])
+        self.logger.info("Output.csv saved!")
 
         return True
 

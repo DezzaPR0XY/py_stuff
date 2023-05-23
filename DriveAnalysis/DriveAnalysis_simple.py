@@ -64,8 +64,10 @@ if __name__ == "__main__":
         print("No files found")
         sys.exit()
 
+    print("Saving to Output.csv")
     df = pandas.DataFrame(file_list)
     df.to_csv(script_path.replace(script_name,"output.csv"),index=False,header=["filename","filepath","file_size","file_modified","file_created"])
+    print("Output.csv saved!")
 
     end_time = time.time()
     print(f"Runtime: {round(end_time-start_time,2)}s")
